@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <title>Treera — Mark — obsidian</title>
+  <rect width="1080" height="1080" fill="#0D0D0D"/>
+  <path d="M540,292 A248,248 0 0,1 788,540" fill="none" stroke="#5AAF78" stroke-width="1.94" opacity="0.75" stroke-linecap="round"/>
+  <path d="M788,540 A248,248 0 0,1 540,788" fill="none" stroke="#5AAF78" stroke-width="1.94" opacity="0.5" stroke-linecap="round"/>
+  <path d="M540,788 A248,248 0 0,1 292,540" fill="none" stroke="#1A1A1A" stroke-width="1.94" stroke-linecap="round"/>
+  <path d="M292,540 A248,248 0 0,1 540,292" fill="none" stroke="#1A1A1A" stroke-width="1.94" stroke-linecap="round"/>
+  <line x1="540" y1="290" x2="540" y2="267.9" stroke="#5AAF78" stroke-width="2.48" stroke-linecap="round" opacity="0.65"/>
+  <line x1="790" y1="540" x2="812.1" y2="540" stroke="#5AAF78" stroke-width="2.48" stroke-linecap="round" opacity="0.55"/>
+  <line x1="540" y1="790" x2="540" y2="812.1" stroke="#5AAF78" stroke-width="2.48" stroke-linecap="round" opacity="0.45"/>
+  <line x1="290" y1="540" x2="267.9" y2="540" stroke="#5AAF78" stroke-width="2.48" stroke-linecap="round" opacity="0.40"/>
+  <circle cx="540" cy="540" r="172.4" fill="none" stroke="#5AAF78" stroke-width="1.11" stroke-dasharray="3,7" opacity="0.20"/>
+  <polygon points="540,372.4 707.6,540 540,707.6 372.4,540" fill="none" stroke="#5AAF78" stroke-width="0.97" opacity="0.18"/>
+  <line x1="540" y1="372.87" x2="426.78" y2="453.74" stroke="#5AAF78" stroke-width="0.97" opacity="0.3"/>
+  <line x1="540" y1="372.87" x2="653.22" y2="453.74" stroke="#5AAF78" stroke-width="0.97" opacity="0.3"/>
+  <line x1="426.78" y1="453.74" x2="313.57" y2="534.61" stroke="#5AAF78" stroke-width="0.97" opacity="0.18"/>
+  <line x1="426.78" y1="453.74" x2="540" y2="529.22" stroke="#5AAF78" stroke-width="0.97" opacity="0.26"/>
+  <line x1="653.22" y1="453.74" x2="540" y2="529.22" stroke="#5AAF78" stroke-width="0.97" opacity="0.26"/>
+  <line x1="653.22" y1="453.74" x2="766.4300000000001" y2="534.61" stroke="#5AAF78" stroke-width="0.97" opacity="0.18"/>
+  <line x1="540" y1="550.78" x2="426.78" y2="626.26" stroke="#5AAF78" stroke-width="0.97" opacity="0.26"/>
+  <line x1="540" y1="550.78" x2="653.22" y2="626.26" stroke="#5AAF78" stroke-width="0.97" opacity="0.26"/>
+  <line x1="426.78" y1="626.26" x2="540" y2="707.13" stroke="#5AAF78" stroke-width="0.97" opacity="0.3"/>
+  <line x1="653.22" y1="626.26" x2="540" y2="707.13" stroke="#5AAF78" stroke-width="0.97" opacity="0.3"/>
+  <line x1="540" y1="372.87" x2="540" y2="529.22" stroke="#5AAF78" stroke-width="0.97" opacity="0.2"/>
+  <line x1="540" y1="550.78" x2="540" y2="707.13" stroke="#5AAF78" stroke-width="0.97" opacity="0.18"/>
+  <line x1="324.35" y1="540" x2="529.22" y2="540" stroke="#5AAF78" stroke-width="0.97" opacity="0.18"/>
+  <line x1="550.78" y1="540" x2="755.65" y2="540" stroke="#5AAF78" stroke-width="0.97" opacity="0.18"/>
+  <circle cx="540" cy="372.87" r="14.83" fill="#5AAF78"/>
+  <circle cx="426.78" cy="453.74" r="10.78" fill="#5AAF78" opacity="0.78"/>
+  <circle cx="653.22" cy="453.74" r="10.78" fill="#5AAF78" opacity="0.78"/>
+  <circle cx="313.57" cy="540" r="8.09" fill="#5AAF78" opacity="0.4"/>
+  <circle cx="426.78" cy="540" r="10.78" fill="#5AAF78" opacity="0.65"/>
+  <circle cx="540" cy="540" r="65.5" fill="#5AAF78"/>
+  <circle cx="653.22" cy="540" r="10.78" fill="#5AAF78" opacity="0.65"/>
+  <circle cx="766.4300000000001" cy="540" r="8.09" fill="#5AAF78" opacity="0.4"/>
+  <circle cx="426.78" cy="626.26" r="10.78" fill="#5AAF78" opacity="0.72"/>
+  <circle cx="653.22" cy="626.26" r="10.78" fill="#5AAF78" opacity="0.72"/>
+  <circle cx="540" cy="707.13" r="14.83" fill="#5AAF78" opacity="0.92"/>
+  <circle cx="540" cy="292" r="10.78" fill="#5AAF78" opacity="0.65"/>
+  <circle cx="788" cy="540" r="10.78" fill="#5AAF78" opacity="0.58"/>
+  <circle cx="540" cy="788" r="10.78" fill="#5AAF78" opacity="0.52"/>
+  <circle cx="292" cy="540" r="10.78" fill="#5AAF78" opacity="0.5"/>
+</svg>

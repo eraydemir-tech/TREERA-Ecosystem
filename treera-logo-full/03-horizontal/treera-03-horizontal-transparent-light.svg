@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300">
+  <title>Treera — Horizontal Lockup — transparent-light</title>
+  
+  <path d="M150,36 A114,114 0 0,1 264,150" fill="none" stroke="#2A5A3E" stroke-width="1.5" opacity="0.75" stroke-linecap="round"/>
+  <path d="M264,150 A114,114 0 0,1 150,264" fill="none" stroke="#2A5A3E" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+  <path d="M150,264 A114,114 0 0,1 36,150" fill="none" stroke="#C8E0CC" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M36,150 A114,114 0 0,1 150,36" fill="none" stroke="#C8E0CC" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="150" y1="34" x2="150" y2="24.9" stroke="#2A5A3E" stroke-width="1.92" stroke-linecap="round" opacity="0.65"/>
+  <line x1="266" y1="150" x2="275.1" y2="150" stroke="#2A5A3E" stroke-width="1.92" stroke-linecap="round" opacity="0.55"/>
+  <line x1="150" y1="266" x2="150" y2="275.1" stroke="#2A5A3E" stroke-width="1.92" stroke-linecap="round" opacity="0.45"/>
+  <line x1="34" y1="150" x2="24.9" y2="150" stroke="#2A5A3E" stroke-width="1.92" stroke-linecap="round" opacity="0.40"/>
+  <circle cx="150" cy="150" r="79.2" fill="none" stroke="#2A5A3E" stroke-width="0.85" stroke-dasharray="3,7" opacity="0.20"/>
+  <polygon points="150,72.9 227.1,150 150,227.1 72.9,150" fill="none" stroke="#2A5A3E" stroke-width="0.75" opacity="0.18"/>
+  <line x1="150" y1="73.17" x2="97.96000000000001" y2="110.35" stroke="#2A5A3E" stroke-width="0.75" opacity="0.3"/>
+  <line x1="150" y1="73.17" x2="202.04" y2="110.35" stroke="#2A5A3E" stroke-width="0.75" opacity="0.3"/>
+  <line x1="97.96000000000001" y1="110.35" x2="45.91" y2="147.52" stroke="#2A5A3E" stroke-width="0.75" opacity="0.18"/>
+  <line x1="97.96000000000001" y1="110.35" x2="150" y2="145.04" stroke="#2A5A3E" stroke-width="0.75" opacity="0.26"/>
+  <line x1="202.04" y1="110.35" x2="150" y2="145.04" stroke="#2A5A3E" stroke-width="0.75" opacity="0.26"/>
+  <line x1="202.04" y1="110.35" x2="254.09" y2="147.52" stroke="#2A5A3E" stroke-width="0.75" opacity="0.18"/>
+  <line x1="150" y1="154.96" x2="97.96000000000001" y2="189.65" stroke="#2A5A3E" stroke-width="0.75" opacity="0.26"/>
+  <line x1="150" y1="154.96" x2="202.04" y2="189.65" stroke="#2A5A3E" stroke-width="0.75" opacity="0.26"/>
+  <line x1="97.96000000000001" y1="189.65" x2="150" y2="226.82999999999998" stroke="#2A5A3E" stroke-width="0.75" opacity="0.3"/>
+  <line x1="202.04" y1="189.65" x2="150" y2="226.82999999999998" stroke="#2A5A3E" stroke-width="0.75" opacity="0.3"/>
+  <line x1="150" y1="73.17" x2="150" y2="145.04" stroke="#2A5A3E" stroke-width="0.75" opacity="0.2"/>
+  <line x1="150" y1="154.96" x2="150" y2="226.82999999999998" stroke="#2A5A3E" stroke-width="0.75" opacity="0.18"/>
+  <line x1="50.86999999999999" y1="150" x2="145.04" y2="150" stroke="#2A5A3E" stroke-width="0.75" opacity="0.18"/>
+  <line x1="154.96" y1="150" x2="249.13" y2="150" stroke="#2A5A3E" stroke-width="0.75" opacity="0.18"/>
+  <circle cx="150" cy="73.17" r="6.82" fill="#2A5A3E"/>
+  <circle cx="97.96000000000001" cy="110.35" r="4.96" fill="#2A5A3E" opacity="0.78"/>
+  <circle cx="202.04" cy="110.35" r="4.96" fill="#2A5A3E" opacity="0.78"/>
+  <circle cx="45.91" cy="150" r="3.72" fill="#2A5A3E" opacity="0.4"/>
+  <circle cx="97.96000000000001" cy="150" r="4.96" fill="#2A5A3E" opacity="0.65"/>
+  <circle cx="150" cy="150" r="11.52" fill="#2A5A3E"/>
+  <circle cx="202.04" cy="150" r="4.96" fill="#2A5A3E" opacity="0.65"/>
+  <circle cx="254.09" cy="150" r="3.72" fill="#2A5A3E" opacity="0.4"/>
+  <circle cx="97.96000000000001" cy="189.65" r="4.96" fill="#2A5A3E" opacity="0.72"/>
+  <circle cx="202.04" cy="189.65" r="4.96" fill="#2A5A3E" opacity="0.72"/>
+  <circle cx="150" cy="226.82999999999998" r="6.82" fill="#2A5A3E" opacity="0.92"/>
+  <circle cx="150" cy="36" r="4.96" fill="#2A5A3E" opacity="0.65"/>
+  <circle cx="264" cy="150" r="4.96" fill="#2A5A3E" opacity="0.58"/>
+  <circle cx="150" cy="264" r="4.96" fill="#2A5A3E" opacity="0.52"/>
+  <circle cx="36" cy="150" r="4.96" fill="#2A5A3E" opacity="0.5"/>
+  <line x1="204" y1="36" x2="204" y2="264" stroke="#C8E0CC" stroke-width="1"/>
+  <text x="246" y="180" font-family="'Cormorant Garamond',Georgia,serif" font-size="90" font-weight="300" letter-spacing="16" fill="#0F1F14">TREERA</text>
+  <text x="246" y="231" font-family="'DM Mono','Courier New',monospace" font-size="20" letter-spacing="11" fill="#2A5A3E">IMPACT ECOSYSTEM</text>
+</svg>
