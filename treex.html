@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Treera Portal</title>
+<link rel="icon" type="image/svg+xml" href="treera-logo-full/04-favicon/treera-04-favicon-dark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ── Quiet Luxury Theme (treera.co ile birebir) ── */
+  :root, [data-theme="dark"] {
+    --bg:         #070A08;
+    --bg2:        #0B1410;
+    --bg3:        #020503;
+    --text:       #F5F5F0;
+    --text2:      #A8A89E;
+    --text3:      #1C3D2A;
+    --moss1:      #0F2417;
+    --moss2:      #1C3D2A;
+    --accent2:    #5AAF78;
+    --glass-bg:   rgba(7, 10, 8, 0.65);
+    --glass-border: rgba(90, 175, 120, 0.1);
+    --border:     rgba(28, 61, 42, 0.4);
+    --border2:    rgba(168, 168, 158, 0.15);
+    --glow:       rgba(90, 175, 120, 0.05);
+    --orb-blend:  screen;
+    --orb-op:     0.35;
+    --amber:      #D9A35A;
+    --red:        #C2604A;
+    --logo-src:   url('treera-logo-full/03-horizontal/treera-03-horizontal-transparent-dark.svg');
+  }
+
+  [data-theme="light"] {
+    --bg:         #F5F8F5;
+    --bg2:        #EDF2EE;
+    --bg3:        #E2EBE3;
+    --text:       #0F1F14;
+    --text2:      #1E3B26;
+    --text3:      #558763;
+    --moss1:      #C8E0CC;
+    --moss2:      #A8C8AF;
+    --accent2:    #123A1F;
+    --glass-bg:   rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(29, 74, 46, 0.18);
+    --border:     rgba(42, 90, 62, 0.28);
+    --border2:    rgba(42, 90, 62, 0.38);
+    --glow:       rgba(42, 90, 62, 0.04);
+    --orb-blend:  multiply;
+    --orb-op:     0.15;
+    --amber:      #B07A2E;
+    --red:        #B14A38;
+    --logo-src:   url('treera-logo-full/03-horizontal/treera-03-horizontal-transparent-light.svg');
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  /* ── Ambient background (treera.co) ── */
+  .portal-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .grid-tunnel-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+    background-image:
+      linear-gradient(var(--accent2) .5px, transparent .5px),
+      linear-gradient(90deg, var(--accent2) .5px, transparent .5px);
+    background-size: 60px 60px;
+    background-position: center;
+  }
+  .ambient-glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: var(--orb-op);
+    mix-blend-mode: var(--orb-blend);
+    animation: floatOrb 25s infinite alternate ease-in-out;
+  }
+  .orb-green-1 {
+    width: 450px; height: 450px;
+    background: radial-gradient(circle, rgba(90, 175, 120, 0.25) 0%, rgba(15, 36, 23, 0) 70%);
+    top: -10%; left: 10%;
+  }
+  .orb-green-2 {
+    width: 550px; height: 550px;
+    background: radial-gradient(circle, rgba(42, 90, 62, 0.3) 0%, rgba(7, 10, 8, 0) 70%);
+    bottom: 10%; right: -5%;
+    animation-delay: -5s;
+  }
+  .orb-green-3 {
+    width: 380px; height: 380px;
+    background: radial-gradient(circle, rgba(90, 175, 120, 0.2) 0%, rgba(11, 20, 16, 0) 75%);
+    top: 40%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -10s;
+  }
+  @keyframes floatOrb {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(40px, -60px) scale(1.15); }
+    100% { transform: translate(-30px, 30px) scale(0.9); }
+  }
+
+  /* ── Custom cursor dot ── */
+  .cursor-dot {
+    position: fixed; top: 0; left: 0;
+    width: 5px; height: 5px;
+    background: var(--accent2);
+    border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: background 0.2s, width 0.2s, height 0.2s, opacity 0.2s;
+    opacity: 0.75;
+  }
+  .cursor-dot.on-interactive {
+    background: var(--text);
+    width: 7px; height: 7px;
+    opacity: 1;
+  }
+
+  .portal-content { position: relative; z-index: 1; }
+
+  .hidden { display: none !important; }
+
+  /* ── Glass panel base ── */
+  .glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+  }
+
+  /* ── Theme toggle (treera.co header stili) ── */
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    color: var(--accent2);
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-right: 12px;
+  }
+  .theme-toggle:hover { opacity: 0.8; border-color: var(--accent2); }
+  .theme-toggle svg { width: 16px; height: 16px; }
+
+  .wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 32px 24px 96px;
+  }
+
+  /* ============================================================
+     LOGIN SCREEN
+     ============================================================ */
+  #view-login {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 40px;
+    padding: 24px;
+  }
+
+  .login-logo {
+    height: 56px;
+    width: auto;
+    content: var(--logo-src);
+  }
+  .login-logo-wrap img {
+    height: 56px;
+    width: auto;
+    display: block;
+  }
+  .login-logo-wrap .logo-dark  { display: block; }
+  .login-logo-wrap .logo-light { display: none; }
+  [data-theme="light"] .login-logo-wrap .logo-dark  { display: none; }
+  [data-theme="light"] .login-logo-wrap .logo-light { display: block; }
+
+  .login-subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-top: 12px;
+    text-align: center;
+  }
+
+  .login-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+
+  .login-card p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--text2);
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+  .google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 14px 20px;
+    background: var(--accent2);
+    color: var(--bg);
+    border: none;
+    border-radius: 2px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.25,1,0.5,1), box-shadow 0.2s, opacity 0.2s;
+  }
+  .google-btn:hover {
+    opacity: 0.9;
+    box-shadow: 0 0 20px rgba(90, 175, 120, 0.3);
+  }
+
+  .login-note {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text2);
+    margin-top: 24px;
+    font-family: 'DM Mono', monospace;
+    opacity: 0.7;
+  }
+
+  #role-picker { margin-top: 28px; display: none; }
+  #role-picker.show { display: block; }
+
+  .role-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 14px 18px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    text-align: left;
+    transition: border-color 0.35s, transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s;
+  }
+  .role-option:hover {
+    border-color: var(--accent2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(90,175,120,0.15);
+  }
+
+  .avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--moss2);
+    border: 1px solid var(--accent2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--text);
+    flex-shrink: 0;
+  }
+
+  .role-option .meta-small {
+    font-size: 9px;
+    color: var(--text2);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ============================================================
+     TOPBAR
+     ============================================================ */
+  header.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border2);
+    padding-bottom: 24px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 16px;
+    backdrop-filter: blur(12px);
+  }
+
+  .wordmark img {
+    height: 44px;
+    width: auto;
+    display: block;
+  }
+  .wordmark .logo-dark  { display: block; }
+  .wordmark .logo-light { display: none; }
+  [data-theme="light"] .wordmark .logo-dark  { display: none; }
+  [data-theme="light"] .wordmark .logo-light { display: block; }
+
+  .portal-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-left: 12px;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--bg2);
+  }
+
+  .user-chip { display: flex; align-items: center; gap: 12px; }
+  .user-chip .who { text-align: right; }
+  .user-chip .who .name { font-size: 13px; color: var(--text); font-weight: 400; }
+  .user-chip .who .role {
+    font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent2); font-family: 'DM Mono', monospace;
+  }
+  .logout-link {
+    font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text2); text-decoration: none; border-bottom: 1px solid var(--text2);
+    padding-bottom: 2px; margin-left: 16px; cursor: pointer;
+    font-family: 'DM Mono', monospace;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .logout-link:hover { color: var(--accent2); border-color: var(--accent2); }
+
+  /* ============================================================
+     SECTION LABEL
+     ============================================================ */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'DM Mono', monospace;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border2); }
+  .section-label.with-action { justify-content: space-between; }
+  .section-label .toggle {
+    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent2); cursor: pointer; border-bottom: 1px solid var(--accent2);
+    padding-bottom: 2px; white-space: nowrap;
+  }
+
+  /* ============================================================
+     AI SUGGESTIONS (expert-card stili)
+     ============================================================ */
+  .ai-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+  .ai-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    padding: 22px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s, transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+  }
+  .ai-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent2), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .ai-card:hover {
+    border-color: var(--accent2);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.12), 0 0 0 1px rgba(90,175,120,0.15);
+  }
+  .ai-card:hover::after { transform: scaleX(1); }
+  .ai-card .ai-eyebrow {
+    font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--amber); margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+    font-family: 'DM Mono', monospace;
+  }
+  .ai-card .ai-eyebrow::before { content: '◆'; font-size: 8px; }
+  .ai-card p {
+    font-size: 12px; line-height: 1.75; color: var(--text); margin-bottom: 14px; font-weight: 300;
+  }
+  .ai-card .ai-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .ai-btn {
+    font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 6px 12px; border-radius: 2px; cursor: pointer;
+    border: 1px solid var(--border); color: var(--text2);
+    background: transparent; transition: all 0.3s;
+    font-family: 'DM Mono', monospace;
+  }
+  .ai-btn.primary { border-color: var(--accent2); color: var(--accent2); }
+  .ai-btn:hover { color: var(--text); border-color: var(--accent2); box-shadow: 0 0 12px rgba(90,175,120,0.2); }
+
+  /* ============================================================
+     ORBIT
+     ============================================================ */
+  .orbit-section {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 56px;
+    align-items: center;
+    margin-bottom: 56px;
+    padding: 32px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+  }
+  @media (max-width: 880px) { .orbit-section { grid-template-columns: 1fr; gap: 28px; padding: 24px; } }
+
+  .orbit-svg { width: 100%; height: auto; }
+  .orbit-ring { fill: none; stroke: var(--border); stroke-width: 1; }
+  .orbit-core { fill: var(--bg2); stroke: var(--accent2); stroke-width: 1; }
+  .orbit-core-diamond { fill: none; stroke: var(--accent2); stroke-width: 1; opacity: 0.5; }
+  .orbit-label-main { font-family: 'Cormorant Garamond', serif; font-size: 13px; fill: var(--text); letter-spacing: 0.1em; }
+  .orbit-label-sub  { font-size: 8px; fill: var(--text2); letter-spacing: 0.2em; }
+  .node circle.dot { stroke-width: 1.5; transition: r 0.2s ease; }
+  .node text {
+    font-family: 'DM Mono', monospace; font-size: 8.5px; letter-spacing: 0.06em;
+    fill: var(--text2); text-transform: uppercase;
+  }
+  .node:hover circle.dot { r: 7; }
+  .node:hover text { fill: var(--text); }
+  .node { cursor: pointer; }
+  .status-ok    { fill: var(--accent2); stroke: var(--accent2); }
+  .status-attn  { fill: var(--amber);   stroke: var(--amber); }
+  .status-block { fill: var(--red);     stroke: var(--red); }
+  .status-idle  { fill: var(--bg3);     stroke: var(--text2); }
+
+  .orbit-intro h1 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 28px;
+    line-height: 1.35; margin-bottom: 16px; max-width: 440px; color: var(--text);
+  }
+  .orbit-intro h1 em { color: var(--accent2); font-style: italic; }
+  .orbit-intro p { font-size: 13px; line-height: 1.9; color: var(--text2); max-width: 440px; margin-bottom: 20px; font-weight: 300; }
+  .legend { display: flex; gap: 20px; flex-wrap: wrap; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text2); font-family: 'DM Mono', monospace; }
+  .legend-item { display: flex; align-items: center; gap: 8px; }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+  /* ============================================================
+     MODULE GRID (matrix-node stili)
+     ============================================================ */
+  .module-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    margin-bottom: 56px;
+  }
+  @media (max-width: 880px) { .module-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .module-grid { grid-template-columns: 1fr; } }
+
+  .module-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.35s, transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s;
+  }
+  .module-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent2), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .module-card:hover {
+    border-color: var(--accent2);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12), 0 0 0 1px rgba(90,175,120,0.15);
+  }
+  .module-card:hover::after { transform: scaleX(1); }
+  .module-card .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-bottom: 14px; }
+  .module-card h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 20px; margin-bottom: 6px; color: var(--text); }
+  .module-card .owner { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent2); margin-bottom: 4px; font-family: 'DM Mono', monospace; }
+  .module-card .last { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text2); margin-bottom: 12px; font-family: 'DM Mono', monospace; }
+  .module-card .focus { font-size: 12px; line-height: 1.7; color: var(--text2); min-height: 50px; font-weight: 300; }
+
+  /* ============================================================
+     TASK LIST
+     ============================================================ */
+  .task-list {
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    margin-bottom: 56px;
+    overflow: hidden;
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .task-row {
+    display: grid; grid-template-columns: 90px 1fr 120px 90px;
+    gap: 16px; padding: 16px 20px; border-bottom: 1px solid var(--border2);
+    align-items: center; font-size: 12px;
+  }
+  .task-row:last-child { border-bottom: none; }
+  .task-row.head {
+    font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text2);
+    background: var(--bg2); font-family: 'DM Mono', monospace;
+  }
+  @media (max-width: 700px) {
+    .task-row { grid-template-columns: 1fr; gap: 6px; }
+    .task-row.head { display: none; }
+    .task-row > div::before { content: attr(data-label) ': '; color: var(--text2); font-family: 'DM Mono', monospace; font-size: 9px; text-transform: uppercase; }
+  }
+  .task-date { color: var(--accent2); font-size: 11px; letter-spacing: 0.04em; font-family: 'DM Mono', monospace; }
+  .task-status-pill {
+    display: inline-block; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 20px; font-family: 'DM Mono', monospace;
+  }
+  .task-status-pill.done     { background: rgba(90,175,120,0.15); color: var(--accent2); }
+  .task-status-pill.progress { background: rgba(217,163,90,0.15); color: var(--amber); }
+  .task-status-pill.waiting  { background: rgba(168,168,158,0.1); color: var(--text2); }
+  .task-link {
+    color: var(--accent2); text-decoration: none; font-size: 10px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border-bottom: 1px solid var(--accent2); padding-bottom: 2px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ============================================================
+     ADMIN PANEL
+     ============================================================ */
+  .admin-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 56px;
+  }
+  @media (max-width: 880px) { .admin-grid { grid-template-columns: 1fr; } }
+
+  .admin-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    padding: 24px;
+  }
+  .admin-panel h4 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 22px;
+    margin-bottom: 16px; color: var(--text);
+  }
+  .admin-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 0; border-bottom: 1px solid var(--border2); font-size: 12px;
+  }
+  .admin-row:last-of-type { border-bottom: none; }
+  .admin-row .label-main { color: var(--text); }
+  .admin-row .label-sub { color: var(--text2); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; font-family: 'DM Mono', monospace; }
+  .admin-remove {
+    background: none; border: none; color: var(--red); cursor: pointer;
+    font-family: 'DM Mono', monospace; font-size: 14px; padding: 4px 8px; line-height: 1;
+  }
+  .admin-remove:hover { opacity: 0.7; }
+
+  .admin-add { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+  .admin-add select, .admin-add input {
+    flex: 1; min-width: 120px;
+    background: var(--bg3); border: 1px solid var(--border); color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 13px; padding: 12px 14px;
+    border-radius: 2px; outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .admin-add select:focus, .admin-add input:focus {
+    border-color: var(--accent2);
+    box-shadow: 0 0 0 1px rgba(90,175,120,0.4), 0 4px 16px rgba(90,175,120,0.08);
+  }
+  .admin-add button {
+    background: var(--accent2); border: none; color: var(--bg);
+    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 600; padding: 12px 18px; border-radius: 2px; cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .admin-add button:hover { box-shadow: 0 0 16px rgba(90,175,120,0.3); }
+
+  /* ============================================================
+     AGENDA & CALENDAR
+     ============================================================ */
+  .agenda-list {
+    border: 1px solid var(--glass-border); border-radius: 4px; margin-bottom: 56px;
+    overflow: hidden; background: var(--glass-bg);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  }
+  .agenda-row {
+    display: grid; grid-template-columns: 120px 60px 1fr 110px;
+    gap: 16px; padding: 14px 20px; border-bottom: 1px solid var(--border2);
+    align-items: center; font-size: 12px;
+  }
+  .agenda-row:last-child { border-bottom: none; }
+  .agenda-row .ag-date  { color: var(--accent2); font-size: 11px; letter-spacing: 0.04em; font-family: 'DM Mono', monospace; }
+  .agenda-row .ag-time  { color: var(--text2); font-size: 11px; font-family: 'DM Mono', monospace; }
+  .agenda-row .ag-title { color: var(--text); }
+  .agenda-row .ag-tag {
+    font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text2); text-align: right; font-family: 'DM Mono', monospace;
+  }
+  @media (max-width: 700px) {
+    .agenda-row { grid-template-columns: 1fr 70px; gap: 6px 12px; }
+    .agenda-row .ag-title { grid-column: 1 / -1; order: 3; }
+    .agenda-row .ag-tag { order: 4; text-align: left; grid-column: 1 / -1; }
+  }
+
+  .calendar-strip {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px;
+    margin-bottom: 56px;
+  }
+  .cal-day {
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border); border-radius: 4px; padding: 18px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .cal-day:hover { border-color: var(--accent2); transform: translateY(-2px); }
+  .cal-day.today { border-color: var(--accent2); background: var(--bg2); }
+  .cal-day .cal-date {
+    font-family: 'Cormorant Garamond', serif; font-size: 24px; margin-bottom: 8px; color: var(--text);
+  }
+  .cal-day .cal-label {
+    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text2); margin-bottom: 10px; font-family: 'DM Mono', monospace;
+  }
+  .cal-day .cal-event { font-size: 11px; line-height: 1.6; color: var(--text); font-weight: 300; }
+  .cal-day .cal-empty { font-size: 11px; color: var(--text2); font-style: italic; }
+
+  /* ============================================================
+     DATA MODEL
+     ============================================================ */
+  .data-model {
+    border: 1px solid var(--glass-border); border-radius: 4px; padding: 24px; margin-bottom: 40px;
+    font-size: 11px; line-height: 1.8; color: var(--text2); display: none;
+    background: var(--bg3);
+    font-family: 'DM Mono', monospace;
+  }
+  .data-model.show { display: block; }
+  .data-model pre { white-space: pre-wrap; color: var(--text); }
+  .data-model .dm-title { color: var(--accent2); text-transform: uppercase; letter-spacing: 0.1em; font-size: 10px; margin: 16px 0 6px; }
+  .data-model .dm-title:first-child { margin-top: 0; }
+
+  footer {
+    border-top: 1px solid var(--border2); padding-top: 24px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text2);
+    font-family: 'DM Mono', monospace;
+  }
+  footer a { color: var(--accent2); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<!-- Ambient background -->
+<div class="portal-bg" aria-hidden="true">
+  <div class="grid-tunnel-bg"></div>
+  <div class="ambient-glow-orb orb-green-1"></div>
+  <div class="ambient-glow-orb orb-green-2"></div>
+  <div class="ambient-glow-orb orb-green-3"></div>
+</div>
+
+<div class="cursor-dot" id="cursor-dot"></div>
+
+<!-- ================================================================
+     LOGIN VIEW
+     ================================================================ -->
+<div id="view-login" class="portal-content">
+  <div class="login-logo-wrap">
+    <img class="logo-dark"  src="treera-logo-full/03-horizontal/treera-03-horizontal-transparent-dark.svg" alt="Treera">
+    <img class="logo-light" src="treera-logo-full/03-horizontal/treera-03-horizontal-transparent-light.svg" alt="Treera">
+  </div>
+  <div class="login-subtitle">Operasyon Portalı</div>
+  <div class="login-card">
+    <p>Şirket içi operasyon portalı. Devam etmek için Google hesabınla giriş yap.</p>
+    <button class="google-btn" onclick="showRolePicker()">
+      <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#070A08" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84c-.21 1.13-.85 2.09-1.81 2.73v2.27h2.92c1.71-1.57 2.69-3.88 2.69-6.64z"/><path fill="#070A08" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.27c-.81.54-1.84.86-3.04.86-2.34 0-4.32-1.58-5.03-3.71H.96v2.33C2.44 15.98 5.48 18 9 18z"/><path fill="#070A08" d="M3.97 10.7c-.18-.54-.28-1.11-.28-1.7s.1-1.16.28-1.7V4.97H.96A8.997 8.997 0 0 0 0 9c0 1.45.35 2.83.96 4.03l3.01-2.33z"/><path fill="#070A08" d="M9 3.58c1.32 0 2.5.45 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.97l3.01 2.33C4.68 5.16 6.66 3.58 9 3.58z"/></svg>
+      Google ile Giriş Yap
+    </button>
+
+    <div id="role-picker">
+      <div class="role-option" onclick="login('eray')">
+        <div class="avatar">E</div>
+        <div>
+          <div>Eray Demir</div>
+          <div class="meta-small">Kurucu — Tüm Ekosistem</div>
+        </div>
+      </div>
+      <div class="role-option" onclick="login('bigem')">
+        <div class="avatar">B</div>
+        <div>
+          <div>Bigem Özer</div>
+          <div class="meta-small">COO — Operasyon Görünümü</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="login-note">Görsel prototip — gerçek Google OAuth sonraki fazda bağlanacak</div>
+  </div>
+</div>
+
+<!-- ================================================================
+     ERAY DASHBOARD
+     ================================================================ -->
+<div id="view-eray" class="hidden portal-content">
+  <div class="wrap">
+    <header class="topbar">
+      <div class="wordmark" style="display:flex;align-items:center;">
+        <img class="logo-dark"  src="treera-logo-full/03-horizontal/treera-03-horizontal-transparent-dark.svg" alt="Treera">
+        <img class="logo-light" src="treera-logo-full/03-horizontal/treera-03-horizontal-transparent-light.svg" alt="Treera">
+        <span class="portal-badge">Portal</span>
+      </div>
+      <div class="user-chip">
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeToggleEray" aria-label="Tema değiştir">
+          <svg id="sun-icon-eray" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg id="moon-icon-eray" class="hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <div class="who">
+          <div class="name">Eray Demir</div>
+          <div class="role">Kurucu</div>
+        </div>
+        <div class="avatar">E</div>
+        <span class="logout-link" onclick="logout()">Çıkış</span>
+      </div>
+    </header>
+
+    <div class="section-label">Senin İçin Öneriler</div>
+    <div class="ai-grid" id="aiGridEray"></div>
+
+    <div class="section-label">Genel Bakış — Tüm Ekosistem</div>
+    <section class="orbit-section">
+      <svg class="orbit-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <circle class="orbit-ring" cx="200" cy="200" r="160"/>
+        <circle class="orbit-core" cx="200" cy="200" r="46"/>
+        <rect class="orbit-core-diamond" x="178" y="178" width="44" height="44" transform="rotate(45 200 200)"/>
+        <text class="orbit-label-main" x="200" y="196" text-anchor="middle">TREERA</text>
+        <text class="orbit-label-sub" x="200" y="212" text-anchor="middle">ECOSYSTEM</text>
+        <g id="nodes"></g>
+      </svg>
+      <div class="orbit-intro">
+        <h1>Tüm girişimler, <em>tek yörüngede.</em></h1>
+        <p>Her nokta bir iş kolu. Yeşil yolunda, amber dikkat gerektiriyor, kırmızı blokeli, gri pasif. Aşağıda detaylar ve düzenleme paneli var.</p>
+        <div class="legend">
+          <span class="legend-item"><span class="legend-dot" style="background:var(--accent2)"></span>Yolunda</span>
+          <span class="legend-item"><span class="legend-dot" style="background:var(--amber)"></span>Dikkat</span>
+          <span class="legend-item"><span class="legend-dot" style="background:var(--red)"></span>Blokeli</span>
+          <span class="legend-item"><span class="legend-dot" style="background:transparent;border:1px solid var(--text2)"></span>Pasif</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-label">Modüller</div>
+    <div class="module-grid" id="moduleGrid"></div>
+
+    <div class="section-label">Bu Hafta — Takvim</div>
+    <div class="calendar-strip" id="calendarStrip"></div>
+
+    <div class="section-label">Yaklaşan Ajanda — Takvimden Canlı</div>
+    <div class="agenda-list" id="agendaList"></div>
+
+    <div class="section-label with-action">
+      <span>Ekip &amp; Projeler — Yönetim</span>
+      <span class="toggle" onclick="toggleDataModel()">Veri Modelini Göster/Gizle</span>
+    </div>
+    <div class="admin-grid">
+      <div class="admin-panel">
+        <h4>Çalışanlar</h4>
+        <div id="employeeList"></div>
+        <div class="admin-add">
+          <select id="newEmployeeRole">
+            <option value="">Rol seç...</option>
+            <option>Kurucu</option>
+            <option>COO</option>
+            <option>Yaratıcı Direktör</option>
+            <option>Yazılım Ortağı</option>
+            <option>Satış Lideri</option>
+            <option>Finans</option>
+            <option>Hukuk</option>
+            <option>Operasyon</option>
+            <option>Stajyer</option>
+          </select>
+          <input type="text" id="newEmployeeName" placeholder="Ad Soyad">
+          <button onclick="addEmployee()">Ekle</button>
+        </div>
+      </div>
+      <div class="admin-panel">
+        <h4>Projeler / Modüller</h4>
+        <div id="projectList"></div>
+        <div class="admin-add">
+          <select id="newProjectStatus">
+            <option value="ok">Yolunda</option>
+            <option value="attn">Dikkat</option>
+            <option value="block">Blokeli</option>
+            <option value="idle">Pasif</option>
+          </select>
+          <input type="text" id="newProjectName" placeholder="Proje adı">
+          <button onclick="addProject()">Ekle</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="data-model" id="dataModel">
+      <div class="dm-title">users</div>
+      <pre>{ uid, name, email, role: "founder"|"coo"|"member", googleId, photoUrl }</pre>
+      <div class="dm-title">projects</div>
+      <pre>{ id, name, node, ownerUid, status: "ok"|"attn"|"block"|"idle", lastActivity, focus, notionDbId? }</pre>
+      <div class="dm-title">tasks</div>
+      <pre>{ id, projectId, assigneeUid, title, description, dueDate, status: "waiting"|"progress"|"done", notionPageUrl, priority }</pre>
+      <div class="dm-title">ai_suggestions</div>
+      <pre>{ id, userId, type: "follow_up"|"reminder"|"insight", text, sourceRef, createdAt, dismissed }</pre>
+      <div class="dm-title">calendar_events</div>
+      <pre>{ id, googleEventId, title, date, linkedTaskId, linkedNotionUrl }</pre>
+      <p style="margin-top:12px;">Bu şema Firestore koleksiyonu olarak kurulur. Auth: Firebase + Google Sign-In. Notion senkronu ve AI önerileri bir Cloudflare Worker üzerinden bu koleksiyonlara yazar.</p>
+    </div>
+
+    <footer>
+      <span>Treera Impact Ecosystem — Operasyon Portalı (Prototip)</span>
+      <span>Veri kaynağı: <a href="https://app.notion.com/p/f5f31fd858814bdbb17b253d4955a030" target="_blank">Notion Master Tracker</a></span>
+    </footer>
+  </div>
+</div>
+
+<!-- ================================================================
+     BIGEM DASHBOARD
+     ================================================================ -->
+<div id="view-bigem" class="hidden portal-content">
+  <div class="wrap">
+    <header class="topbar">
+      <div class="wordmark" style="display:flex;align-items:center;">
+        <img class="logo-dark"  src="treera-logo-full/03-horizontal/treera-03-horizontal-transparent-dark.svg" alt="Treera">
+        <img class="logo-light" src="treera-logo-full/03-horizontal/treera-03-horizontal-transparent-light.svg" alt="Treera">
+        <span class="portal-badge">Portal</span>
+      </div>
+      <div class="user-chip">
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeToggleBigem" aria-label="Tema değiştir">
+          <svg id="sun-icon-bigem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg id="moon-icon-bigem" class="hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <div class="who">
+          <div class="name">Bigem Özer</div>
+          <div class="role">COO</div>
+        </div>
+        <div class="avatar">B</div>
+        <span class="logout-link" onclick="logout()">Çıkış</span>
+      </div>
+    </header>
+
+    <div class="section-label">Senin İçin Öneriler</div>
+    <div class="ai-grid" id="aiGridBigem"></div>
+
+    <div class="section-label">Görevlerin — Stajyer Onboarding</div>
+    <div class="task-list" id="bigemTasks"></div>
+
+    <div class="section-label">Bu Hafta — Takvim</div>
+    <div class="calendar-strip" id="calendarStripBigem"></div>
+
+    <footer>
+      <span>Treera Impact Ecosystem — Operasyon Portalı (Prototip)</span>
+      <span>Veri kaynağı: <a href="https://app.notion.com/p/f5f31fd858814bdbb17b253d4955a030" target="_blank">Notion Master Tracker</a></span>
+    </footer>
+  </div>
+</div>
+
+<script>
+  let MODULES = [
+    { name: "Agency / Tera", node: "Tera", owner: "Melissu Mollaoğulları", status: "ok", last: "Aktif",
+      focus: "Rouse Cup sosyal medya yönetimi sürüyor. Sözleşme imzası ve ödeme teyidi bekleniyor." },
+    { name: "ROTAGO / TatilApp", node: "ROTAGO", owner: "Mert Berk", status: "idle", last: "—",
+      focus: "Python/Uvicorn altyapısı üzerinde geliştirme sürüyor — bu panele henüz veri bağlanmadı." },
+    { name: "Vizeciler (VFS Otomasyonu)", node: "Vizeciler", owner: "Mert Berk", status: "attn", last: "Son hareket: 11 Nis",
+      focus: "VFS Global randevu otomasyonu + %50/50 ortaklık teklifi masada. Karar bekleniyor." },
+    { name: "ZerOnity / Minego", node: "Minego", owner: "Ceren Ceylan", status: "attn", last: "Son hareket: 14 Nis",
+      focus: "Marka kimliği ön çalışması gönderildi, 2 aydır yanıt bekliyor." },
+    { name: "EU Sales (Almanya)", node: "EU Sales", owner: "Funda Ögeç", status: "attn", last: "Son hareket: 10 Nis",
+      focus: "'Anahtar teslim iştirak' teklifi iletildi. Onay/karar bekleniyor." },
+    { name: "Vegan Candle", node: "Vegan Candle", owner: "Melis Hacıoğlu, Elif Güçlü", status: "ok", last: "Üretim aktif",
+      focus: "Üretim aktif. EU Sales dağıtım ağına bağlanması planlanıyor." },
+    { name: "Pet Food / Temiz Mama", node: "Pet Food", owner: "Pınar Kaya", status: "ok", last: "Üretim aktif",
+      focus: "Üretim hattı aktif. Dağıtım EU Sales üzerinden planlanıyor." },
+    { name: "Boutique Merchandise", node: "Boutique", owner: "—", status: "idle", last: "—",
+      focus: "Cricut Maker 4 ile küçük seri üretim — veri yok." },
+    { name: "ED Language", node: "ED Language", owner: "Berna Akyol, Şefika Çetin", status: "attn", last: "Son hareket: 8 Nis",
+      focus: "Yeni eğitim kanadı duyuruldu, kurumsal yapı planlaması ilerlemedi." },
+    { name: "Holding Yapılanması", node: "Yapılanma", owner: "Dış Danışman + Hukuk", status: "attn", last: "Son hareket: 9 Nis",
+      focus: "ZerOnity'nin yasal izolasyonu ve mali kalkan görüşüldü. Sonuç netleşmedi." },
+    { name: "HR / Onboarding", node: "HR", owner: "Eray Demir", status: "attn", last: "Bu hafta",
+      focus: "İlk stajyer süreci yürütülüyor (Damla)." },
+  ];
+
+  let EMPLOYEES = [
+    { name: "Eray Demir", role: "Kurucu" },
+    { name: "Bigem Özer", role: "COO" },
+    { name: "Melissu Mollaoğulları", role: "Yaratıcı Direktör" },
+    { name: "Mert Berk", role: "Yazılım Ortağı" },
+    { name: "Ceren Ceylan", role: "Yazılım Ortağı" },
+    { name: "Funda Ögeç", role: "Satış Lideri" },
+    { name: "Pınar Kaya", role: "Hukuk" },
+    { name: "Merve Karabulut", role: "Finans" },
+    { name: "Damla", role: "Stajyer" },
+  ];
+
+  const AI_ERAY = [
+    { tag: "Takip — 2 ay gecikti", text: "Ceren Ceylan'a Minego marka kimliği önerisi için 14 Nisan'dan beri dönüş yapılmadı. Hızlı bir 'aldım, inceliyorum' mesajı iyi olur.", primary: "Yanıt Taslağı Oluştur", secondary: "Görmezden Gel" },
+    { tag: "Karar Bekliyor", text: "Funda'ya iletilen EU Sales iştirak teklifi 10 Nisan'dan beri yanıt almadı. Takip mesajı atılabilir.", primary: "Takip Mesajı Hazırla", secondary: "Daha Sonra" },
+    { tag: "Bugün", text: "Stajyer Damla için bugünkü adım takvimde işaretli. Notion görev sayfasını açmak ister misin?", primary: "Notion'da Aç", secondary: "Tamamlandı İşaretle" },
+  ];
+
+  const AI_BIGEM = [
+    { tag: "Bugün", text: "Okul koordinatörü ile görüşme bugün planlı görünüyor. Protokol formu hazır mı kontrol et.", primary: "Görevi Aç", secondary: "Ertele" },
+    { tag: "Hazırlık", text: "İSG eğitim linkini Damla'ya gönderdin mi? Henüz işaretlenmemiş.", primary: "Mesaj Taslağı", secondary: "Tamamlandı" },
+  ];
+
+  const BIGEM_TASKS = [
+    { date: "16 Haz", title: "Okul koordinatörünü ara — SGK, protokol, defter formatı", status: "progress", link: "https://app.notion.com/p/37eb266ee1478136a402eedaded5540d" },
+    { date: "17 Haz", title: "Protokol onay takibi + İSG belgesi al", status: "waiting", link: "https://app.notion.com/p/37eb266ee147812e8cdecf04bde76d05" },
+    { date: "18 Haz", title: "SGK son kontrol — deadline", status: "waiting", link: "https://app.notion.com/p/37eb266ee14781a09874caecf101d916" },
+    { date: "19 Haz", title: "Stajyer karşılama ve ilk gün", status: "waiting", link: "https://app.notion.com/p/37eb266ee14781c6b7efe757a92b2f0d" },
+  ];
+
+  const CALENDAR = [
+    { date: "14 Haz", label: "Cmt", today: true, events: ["Stajyer: bilgi & evrak toplama", "17:00 English app", "18:00 Law website update"] },
+    { date: "15 Haz", label: "Paz", today: false, events: ["12:15 Treera website çalışma bloğu"] },
+    { date: "16 Haz", label: "Pzt", today: false, events: ["Stajyer: okul araması & protokol", "16:30 Elif Yıldız"] },
+    { date: "17 Haz", label: "Sal", today: false, events: ["Stajyer: onay & İSG takibi"] },
+    { date: "18 Haz", label: "Çrş", today: false, events: ["Stajyer: SGK deadline"] },
+    { date: "19 Haz", label: "Per", today: false, events: ["Stajyer: STAJ BAŞLANGICI", "16:30 Büşra Dilara Studio", "20:00 Nico Moreno"] },
+    { date: "20 Haz", label: "Cmt", today: false, events: ["16:00 Melda Köse Studio"] },
+  ];
+
+  const AGENDA = [
+    { date: "14 Haz · Cmt", time: "17:00", title: "English app — içerik & website temelleri", tag: "ED Language" },
+    { date: "14 Haz · Cmt", time: "18:00", title: "Law website update", tag: "Hukuk" },
+    { date: "15 Haz · Paz", time: "12:15", title: "Treera website çalışma bloğu", tag: "Treera" },
+    { date: "16 Haz · Pzt", time: "16:30", title: "Elif Yıldız", tag: "Studio" },
+    { date: "19 Haz · Per", time: "08:45", title: "Stajyer Damla — ilk gün", tag: "HR" },
+    { date: "19 Haz · Per", time: "16:30", title: "Büşra Dilara Uslu Studio", tag: "Studio" },
+    { date: "19 Haz · Per", time: "20:00", title: "Nico Moreno (Miray, Çağrı, Ceren, Samet, Beren)", tag: "Etkinlik" },
+    { date: "20 Haz · Cmt", time: "16:00", title: "Melda Köse Studio", tag: "Studio" },
+    { date: "25 Haz · Çrş", time: "14:00", title: "Kübra Studio", tag: "Studio" },
+    { date: "25 Haz · Çrş", time: "18:00", title: "Zelal Dilara — düğün çekimi studio", tag: "Studio" },
+    { date: "26 Haz · Cmt", time: "18:30", title: "Meryem Çetiz", tag: "Studio" },
+    { date: "2 Tem · Çrş", time: "19:00", title: "Özge Studio", tag: "Studio" },
+    { date: "3–6 Tem", time: "—", title: "Ankara (seyahat)", tag: "Seyahat" },
+    { date: "6–9 Tem", time: "—", title: "Fethiye / Kabak Koyu", tag: "Seyahat" },
+    { date: "9–12 Tem", time: "—", title: "Kaş", tag: "Seyahat" },
+    { date: "12–16 Tem", time: "—", title: "İzmir (baz kamp) — Kuşadası/Çeşme/Alaçatı", tag: "Seyahat" },
+  ];
+
+  const statusClass = { ok: 'status-ok', attn: 'status-attn', block: 'status-block', idle: 'status-idle' };
+
+  /* ── LOGIN / NAV ── */
+  function showRolePicker() {
+    document.getElementById('role-picker').classList.add('show');
+  }
+  function login(role) {
+    document.getElementById('view-login').classList.add('hidden');
+    if (role === 'eray') {
+      document.getElementById('view-eray').classList.remove('hidden');
+      renderEray();
+    } else {
+      document.getElementById('view-bigem').classList.remove('hidden');
+      renderBigem();
+    }
+  }
+  function logout() {
+    document.getElementById('view-eray').classList.add('hidden');
+    document.getElementById('view-bigem').classList.add('hidden');
+    document.getElementById('view-login').classList.remove('hidden');
+    document.getElementById('role-picker').classList.remove('show');
+  }
+  function toggleDataModel() {
+    document.getElementById('dataModel').classList.toggle('show');
+  }
+
+  /* ── THEME (treera.co ile aynı mantık) ── */
+  let isDarkMode = true;
+
+  function applyTheme() {
+    const root = document.documentElement;
+    if (isDarkMode) {
+      root.setAttribute('data-theme', 'dark');
+      root.classList.add('dark');
+    } else {
+      root.setAttribute('data-theme', 'light');
+      root.classList.remove('dark');
+    }
+    localStorage.setItem('treera-theme', isDarkMode ? 'dark' : 'light');
+
+    ['eray', 'bigem'].forEach(suffix => {
+      const sun  = document.getElementById('sun-icon-' + suffix);
+      const moon = document.getElementById('moon-icon-' + suffix);
+      if (sun && moon) {
+        if (isDarkMode) { sun.classList.remove('hidden'); moon.classList.add('hidden'); }
+        else            { sun.classList.add('hidden');    moon.classList.remove('hidden'); }
+      }
+    });
+  }
+
+  function toggleTheme() {
+    isDarkMode = !isDarkMode;
+    applyTheme();
+  }
+
+  (function initTheme() {
+    const stored = localStorage.getItem('treera-theme');
+    if (stored) {
+      isDarkMode = stored === 'dark';
+    } else {
+      const h = new Date().getHours();
+      isDarkMode = !(h >= 7 && h < 19);
+    }
+    applyTheme();
+  })();
+
+  /* ── CURSOR DOT ── */
+  const cursorDot = document.getElementById('cursor-dot');
+  document.addEventListener('mousemove', (e) => {
+    cursorDot.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%))`;
+  });
+  document.querySelectorAll('button, a, input, select, .role-option, .ai-card, .module-card, .cal-day').forEach(el => {
+    el.addEventListener('mouseenter', () => cursorDot.classList.add('on-interactive'));
+    el.addEventListener('mouseleave', () => cursorDot.classList.remove('on-interactive'));
+  });
+
+  /* ── RENDER HELPERS ── */
+  function renderAgenda() {
+    const list = document.getElementById('agendaList');
+    if (!list) return;
+    list.innerHTML = '';
+    AGENDA.forEach(a => {
+      const row = document.createElement('div');
+      row.className = 'agenda-row';
+      row.innerHTML = `
+        <div class="ag-date">${a.date}</div>
+        <div class="ag-time">${a.time}</div>
+        <div class="ag-title">${a.title}</div>
+        <div class="ag-tag">${a.tag}</div>`;
+      list.appendChild(row);
+    });
+  }
+
+  function renderEray() {
+    const aiGrid = document.getElementById('aiGridEray');
+    aiGrid.innerHTML = '';
+    AI_ERAY.forEach(a => {
+      const card = document.createElement('div');
+      card.className = 'ai-card';
+      card.innerHTML = `
+        <div class="ai-eyebrow">${a.tag}</div>
+        <p>${a.text}</p>
+        <div class="ai-actions">
+          <span class="ai-btn primary">${a.primary}</span>
+          <span class="ai-btn">${a.secondary}</span>
+        </div>`;
+      aiGrid.appendChild(card);
+    });
+
+    const nodesG = document.getElementById('nodes');
+    nodesG.innerHTML = '';
+    const cx = 200, cy = 200, r = 160;
+    MODULES.forEach((m, i) => {
+      const angle = (i / MODULES.length) * 2 * Math.PI - Math.PI / 2;
+      const x = cx + r * Math.cos(angle);
+      const y = cy + r * Math.sin(angle);
+      const labelOffset = Math.sin(angle) >= 0 ? 18 : -14;
+      const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      g.setAttribute('class', 'node');
+      g.innerHTML = `
+        <circle class="dot ${statusClass[m.status]}" cx="${x}" cy="${y}" r="5"/>
+        <text x="${x}" y="${y + labelOffset}" text-anchor="middle">${m.node}</text>`;
+      nodesG.appendChild(g);
+    });
+
+    const moduleGrid = document.getElementById('moduleGrid');
+    moduleGrid.innerHTML = '';
+    MODULES.forEach(m => {
+      const card = document.createElement('div');
+      card.className = 'module-card';
+      card.innerHTML = `
+        <span class="status-dot ${statusClass[m.status]}"></span>
+        <h3>${m.name}</h3>
+        <div class="owner">${m.owner}</div>
+        <div class="last">${m.last}</div>
+        <div class="focus">${m.focus}</div>`;
+      moduleGrid.appendChild(card);
+    });
+
+    renderCalendar('calendarStrip');
+    renderAgenda();
+    renderEmployees();
+    renderProjects();
+  }
+
+  function renderBigem() {
+    const aiGrid = document.getElementById('aiGridBigem');
+    aiGrid.innerHTML = '';
+    AI_BIGEM.forEach(a => {
+      const card = document.createElement('div');
+      card.className = 'ai-card';
+      card.innerHTML = `
+        <div class="ai-eyebrow">${a.tag}</div>
+        <p>${a.text}</p>
+        <div class="ai-actions">
+          <span class="ai-btn primary">${a.primary}</span>
+          <span class="ai-btn">${a.secondary}</span>
+        </div>`;
+      aiGrid.appendChild(card);
+    });
+
+    const taskList = document.getElementById('bigemTasks');
+    taskList.innerHTML = `
+      <div class="task-row head">
+        <div>Tarih</div><div>Görev</div><div>Durum</div><div>Bağlantı</div>
+      </div>`;
+    BIGEM_TASKS.forEach(t => {
+      const pillClass = t.status === 'done' ? 'done' : t.status === 'progress' ? 'progress' : 'waiting';
+      const pillText = t.status === 'done' ? 'Tamamlandı' : t.status === 'progress' ? 'Bugün' : 'Bekliyor';
+      const row = document.createElement('div');
+      row.className = 'task-row';
+      row.innerHTML = `
+        <div class="task-date" data-label="Tarih">${t.date}</div>
+        <div data-label="Görev">${t.title}</div>
+        <div data-label="Durum"><span class="task-status-pill ${pillClass}">${pillText}</span></div>
+        <div data-label="Bağlantı"><a class="task-link" href="${t.link}" target="_blank">Notion →</a></div>`;
+      taskList.appendChild(row);
+    });
+
+    renderCalendar('calendarStripBigem');
+  }
+
+  function renderCalendar(targetId) {
+    const strip = document.getElementById(targetId);
+    strip.innerHTML = '';
+    CALENDAR.forEach(d => {
+      const day = document.createElement('div');
+      day.className = 'cal-day' + (d.today ? ' today' : '');
+      const eventsHtml = d.events.length
+        ? d.events.map(e => `<div class="cal-event">${e}</div>`).join('')
+        : `<div class="cal-empty">—</div>`;
+      day.innerHTML = `
+        <div class="cal-label">${d.label}</div>
+        <div class="cal-date">${d.date.split(' ')[0]}</div>
+        ${eventsHtml}`;
+      strip.appendChild(day);
+    });
+  }
+
+  function renderEmployees() {
+    const list = document.getElementById('employeeList');
+    list.innerHTML = '';
+    EMPLOYEES.forEach((e, i) => {
+      const row = document.createElement('div');
+      row.className = 'admin-row';
+      row.innerHTML = `
+        <div>
+          <div class="label-main">${e.name}</div>
+          <div class="label-sub">${e.role}</div>
+        </div>
+        <button class="admin-remove" onclick="removeEmployee(${i})">×</button>`;
+      list.appendChild(row);
+    });
+  }
+  function addEmployee() {
+    const name = document.getElementById('newEmployeeName').value.trim();
+    const role = document.getElementById('newEmployeeRole').value;
+    if (!name || !role) return;
+    EMPLOYEES.push({ name, role });
+    document.getElementById('newEmployeeName').value = '';
+    document.getElementById('newEmployeeRole').value = '';
+    renderEmployees();
+  }
+  function removeEmployee(i) {
+    EMPLOYEES.splice(i, 1);
+    renderEmployees();
+  }
+
+  function renderProjects() {
+    const list = document.getElementById('projectList');
+    list.innerHTML = '';
+    MODULES.forEach((m, i) => {
+      const row = document.createElement('div');
+      row.className = 'admin-row';
+      row.innerHTML = `
+        <div>
+          <div class="label-main">${m.name}</div>
+          <div class="label-sub">${m.owner}</div>
+        </div>
+        <button class="admin-remove" onclick="removeProject(${i})">×</button>`;
+      list.appendChild(row);
+    });
+  }
+  function addProject() {
+    const name = document.getElementById('newProjectName').value.trim();
+    const status = document.getElementById('newProjectStatus').value;
+    if (!name) return;
+    MODULES.push({ name, node: name.split(' ')[0], owner: "—", status, last: "Yeni", focus: "Henüz açıklama eklenmedi." });
+    document.getElementById('newProjectName').value = '';
+    renderProjects();
+    renderEray();
+  }
+  function removeProject(i) {
+    MODULES.splice(i, 1);
+    renderProjects();
+    renderEray();
+  }
+</script>
+</body>
+</html>

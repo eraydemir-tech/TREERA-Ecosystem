@@ -12,23 +12,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
 
   <!-- Google Identity Services (Google ile Giriş) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            display: ["'Cormorant Garamond'", "serif"],
-            sans: ["'DM Sans'", "sans-serif"],
-            mono: ["'DM Mono'", "monospace"]
-          }
-        }
-      }
-    }
-  </script>
 
   <style>
     /* Quiet Luxury Theme Variables */
@@ -593,7 +580,7 @@
         </div>
 
         <!-- The B2B ROI Calculator Shell -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start p-8 md:p-12 rounded-[2px] border" style="borderColor: var(--glass-border); background: var(--bg3); backdrop-filter: blur(16px);">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start p-8 md:p-12 rounded-[2px] border" style="border-color: var(--glass-border); background: var(--bg3); backdrop-filter: blur(16px);">
           
           <!-- CONTROLS -->
           <div class="space-y-8">
@@ -645,7 +632,7 @@
           </div>
 
           <!-- METRIC DISPLAY BOXES -->
-          <div class="space-y-6 p-6 rounded-[2px] border transition-all" style="borderColor: var(--glass-border); background: var(--bg2);">
+          <div class="space-y-6 p-6 rounded-[2px] border transition-all" style="border-color: var(--glass-border); background: var(--bg2);">
             <div class="border-b pb-4" style="border-color: var(--border)">
               <span id="lbl-est-gain" class="text-[10px] tracking-wider uppercase font-mono block mb-1" style="color: var(--text2)">
                 Tahmini Yıllık Etki (Büyüme Değeri)
