@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-  /* ── Quiet Luxury Theme (treera.co ile birebir) ── */
+  
   :root, [data-theme="dark"] {
     --bg:         #070A08;
     --bg2:        #0B1410;
@@ -69,7 +69,6 @@
     transition: background-color 0.5s ease, color 0.5s ease;
   }
 
-  /* ── Ambient background (treera.co) ── */
   .portal-bg {
     position: fixed;
     inset: 0;
@@ -119,7 +118,6 @@
     100% { transform: translate(-30px, 30px) scale(0.9); }
   }
 
-  /* ── Custom cursor dot ── */
   .cursor-dot {
     position: fixed; top: 0; left: 0;
     width: 5px; height: 5px;
@@ -140,7 +138,6 @@
 
   .hidden { display: none !important; }
 
-  /* ── Glass panel base ── */
   .glass-panel {
     background: var(--glass-bg);
     backdrop-filter: blur(18px) saturate(160%);
@@ -149,7 +146,6 @@
     border-radius: 4px;
   }
 
-  /* ── Theme toggle (treera.co header stili) ── */
   .theme-toggle {
     display: inline-flex;
     align-items: center;
@@ -172,9 +168,6 @@
     padding: 32px 24px 96px;
   }
 
-  /* ============================================================
-     LOGIN SCREEN
-     ============================================================ */
   #view-login {
     min-height: 100vh;
     display: flex;
@@ -309,9 +302,6 @@
     font-family: 'DM Mono', monospace;
   }
 
-  /* ============================================================
-     TOPBAR
-     ============================================================ */
   header.topbar {
     display: flex;
     justify-content: space-between;
@@ -363,9 +353,6 @@
   }
   .logout-link:hover { color: var(--accent2); border-color: var(--accent2); }
 
-  /* ============================================================
-     SECTION LABEL
-     ============================================================ */
   .section-label {
     font-size: 10px;
     letter-spacing: 0.18em;
@@ -385,9 +372,6 @@
     padding-bottom: 2px; white-space: nowrap;
   }
 
-  /* ============================================================
-     AI SUGGESTIONS (expert-card stili)
-     ============================================================ */
   .ai-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -438,9 +422,6 @@
   .ai-btn.primary { border-color: var(--accent2); color: var(--accent2); }
   .ai-btn:hover { color: var(--text); border-color: var(--accent2); box-shadow: 0 0 12px rgba(90,175,120,0.2); }
 
-  /* ============================================================
-     ORBIT
-     ============================================================ */
   .orbit-section {
     display: grid;
     grid-template-columns: 380px 1fr;
@@ -485,9 +466,6 @@
   .legend-item { display: flex; align-items: center; gap: 8px; }
   .legend-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
 
-  /* ============================================================
-     MODULE GRID (matrix-node stili)
-     ============================================================ */
   .module-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
     margin-bottom: 56px;
@@ -525,9 +503,6 @@
   .module-card .last { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text2); margin-bottom: 12px; font-family: 'DM Mono', monospace; }
   .module-card .focus { font-size: 12px; line-height: 1.7; color: var(--text2); min-height: 50px; font-weight: 300; }
 
-  /* ============================================================
-     TASK LIST
-     ============================================================ */
   .task-list {
     border: 1px solid var(--glass-border);
     border-radius: 4px;
@@ -567,9 +542,6 @@
     font-family: 'DM Mono', monospace;
   }
 
-  /* ============================================================
-     ADMIN PANEL
-     ============================================================ */
   .admin-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 56px;
   }
@@ -620,9 +592,6 @@
   }
   .admin-add button:hover { box-shadow: 0 0 16px rgba(90,175,120,0.3); }
 
-  /* ============================================================
-     AGENDA & CALENDAR
-     ============================================================ */
   .agenda-list {
     border: 1px solid var(--glass-border); border-radius: 4px; margin-bottom: 56px;
     overflow: hidden; background: var(--glass-bg);
@@ -669,9 +638,6 @@
   .cal-day .cal-event { font-size: 11px; line-height: 1.6; color: var(--text); font-weight: 300; }
   .cal-day .cal-empty { font-size: 11px; color: var(--text2); font-style: italic; }
 
-  /* ============================================================
-     DATA MODEL
-     ============================================================ */
   .data-model {
     border: 1px solid var(--glass-border); border-radius: 4px; padding: 24px; margin-bottom: 40px;
     font-size: 11px; line-height: 1.8; color: var(--text2); display: none;
@@ -695,7 +661,6 @@
 </head>
 <body>
 
-<!-- Ambient background -->
 <div class="portal-bg" aria-hidden="true">
   <div class="grid-tunnel-bg"></div>
   <div class="ambient-glow-orb orb-green-1"></div>
@@ -705,9 +670,6 @@
 
 <div class="cursor-dot" id="cursor-dot"></div>
 
-<!-- ================================================================
-     LOGIN VIEW
-     ================================================================ -->
 <div id="view-login" class="portal-content">
   <div class="login-logo-wrap">
     <img class="logo-dark"  src="treera-logo-full/03-horizontal/treera-03-horizontal-transparent-dark.svg" alt="Treera">
@@ -742,9 +704,6 @@
   </div>
 </div>
 
-<!-- ================================================================
-     ERAY DASHBOARD
-     ================================================================ -->
 <div id="view-eray" class="hidden portal-content">
   <div class="wrap">
     <header class="topbar">
@@ -863,9 +822,6 @@
   </div>
 </div>
 
-<!-- ================================================================
-     BIGEM DASHBOARD
-     ================================================================ -->
 <div id="view-bigem" class="hidden portal-content">
   <div class="wrap">
     <header class="topbar">
@@ -991,7 +947,6 @@
 
   const statusClass = { ok: 'status-ok', attn: 'status-attn', block: 'status-block', idle: 'status-idle' };
 
-  /* ── LOGIN / NAV ── */
   function showRolePicker() {
     document.getElementById('role-picker').classList.add('show');
   }
@@ -1015,7 +970,6 @@
     document.getElementById('dataModel').classList.toggle('show');
   }
 
-  /* ── THEME (treera.co ile aynı mantık) ── */
   let isDarkMode = true;
 
   function applyTheme() {
@@ -1055,7 +1009,6 @@
     applyTheme();
   })();
 
-  /* ── CURSOR DOT ── */
   const cursorDot = document.getElementById('cursor-dot');
   document.addEventListener('mousemove', (e) => {
     cursorDot.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%))`;
@@ -1065,7 +1018,6 @@
     el.addEventListener('mouseleave', () => cursorDot.classList.remove('on-interactive'));
   });
 
-  /* ── RENDER HELPERS ── */
   function renderAgenda() {
     const list = document.getElementById('agendaList');
     if (!list) return;

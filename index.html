@@ -5,20 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Treera — The Impact Ecosystem</title>
   <link rel="icon" type="image/svg+xml" href="treera-logo-full/04-favicon/treera-04-favicon-dark.svg">
-  
-  <!-- Fonts -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind CSS -->
+
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Google Identity Services (Google ile Giriş) -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 
   <style>
-    /* Quiet Luxury Theme Variables */
+    
     :root, [data-theme="dark"] {
       --bg:         #070A08;
       --bg2:        #0B1410;
@@ -69,8 +66,6 @@
       overflow-x: hidden;
     }
 
-    /* Custom Depth Animations */
-    /* ── CURSOR: iOS minimal — sadece küçük renkli nokta ── */
     .cursor-dot {
       position: fixed; top: 0; left: 0;
       width: 5px; height: 5px;
@@ -88,7 +83,6 @@
       opacity: 1;
     }
 
-    /* ── GLASS CARDS ── */
     .expert-card {
       background: var(--glass-bg);
       backdrop-filter: blur(18px) saturate(160%);
@@ -123,7 +117,6 @@
       position: relative;
     }
 
-    /* ── MATRIX NODES ── */
     .matrix-node {
       background: var(--glass-bg);
       backdrop-filter: blur(14px);
@@ -153,12 +146,10 @@
     }
     .matrix-node:hover::after { transform: scaleX(1); }
 
-    /* ── MAGNETIC BUTTONS ── */
     .portal-btn, button[id="btn-manifesto"], button[id="btn-vectors"] {
       transition: transform 0.2s cubic-bezier(0.25,1,0.5,1), box-shadow 0.2s !important;
     }
 
-    /* ── SCROLL REVEAL: translateY(25px) + scale(0.97) + opacity ── */
     .reveal {
       opacity: 0;
       transform: translateY(35px) scale(0.97);
@@ -170,7 +161,6 @@
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
-    /* Section: belirgin translateY(60px) + scale(0.92) — sayfa sayfa açılıyor */
     .section-zoom {
       opacity: 0;
       transform: translateY(60px) scale(0.93);
@@ -179,7 +169,6 @@
     }
     .section-zoom.in-view { opacity: 1; transform: translateY(0) scale(1); }
 
-    /* ── GLOWING AMBIENT ORB (enhanced) ── */
     .ambient-orb-1 {
       animation: orbFloat1 12s ease-in-out infinite alternate;
     }
@@ -197,17 +186,14 @@
       100% { transform: translate(40px,-60px) scale(0.85); }
     }
 
-    /* ── HERO TITLE SHIMMER ── */
     @keyframes shimmer {
       0%,100% { opacity: 1; }
       50%      { opacity: 0.82; }
     }
     #hero-title { animation: shimmer 6s ease-in-out infinite; }
 
-    /* ── SECTION DIVIDER GLOW ── */
     section { position: relative; }
 
-    /* ── FORM GLASS ── */
     .finput, .ftarea {
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -274,7 +260,6 @@
       100% { transform: translate(-30px, 30px) scale(0.9); }
     }
 
-    /* Custom Buttons and Inputs conforming exactly to Treera standards */
     .portal-btn {
       display: inline-flex;
       align-items: center;
@@ -312,9 +297,6 @@
       box-shadow: 0 0 10px var(--glow);
     }
 
-    /* matrix-node: defined above */
-
-    /* expert-card: defined above */
     .expert-card::before {
       content: '';
       position: absolute;
@@ -326,9 +308,7 @@
       transform: scaleX(0);
       transition: transform 0.5s;
     }
-    /* expert-card:hover defined above */
 
-    /* Header sıkışma koruması: logo asla ezilmez, linkler satıra kırılmaz */
     #main-nav button { white-space: nowrap; }
     #google-signin-btn { white-space: nowrap; }
     @media (max-width: 1100px) {
@@ -336,7 +316,6 @@
       #google-signin-btn { padding: 8px 10px; }
     }
 
-    /* Range slider custom visual track styling */
     input[type="range"]::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
@@ -351,29 +330,25 @@
 </head>
 <body class="dark-theme">
 
-  <!-- Custom Cursor -->
   <div class="cursor-dot" id="cursor-dot"></div>
 
-  <!-- Main Background Container -->
   <div class="relative min-h-screen overflow-hidden">
-    <!-- Fine ambient elements -->
+    
     <div class="grid-tunnel-bg"></div>
     <div class="ambient-glow-orb orb-green-1"></div>
     <div class="ambient-glow-orb orb-green-2"></div>
     <div class="ambient-glow-orb orb-green-3"></div>
 
-    <!-- HEADER / NAVIGATION -->
     <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="main-header" style="background: transparent;">
       <div class="max-w-7xl mx-auto px-6 h-20 md:h-24 flex items-center justify-between border-b" style="border-color: var(--border2); backdrop-filter: blur(12px);">
-        <!-- Corporate Logo -->
+        
         <div class="flex items-center shrink-0">
-          <!-- Dark mode: green logo on dark bg -->
+          
           <img id="logo-dark" src="treera-logo-full/03-horizontal/treera-03-horizontal-transparent-dark.svg" alt="Treera" style="height:48px;width:auto;display:block;flex-shrink:0;" />
-          <!-- Light mode: dark logo on light bg -->
+          
           <img id="logo-light" src="treera-logo-full/03-horizontal/treera-03-horizontal-transparent-light.svg" alt="Treera" style="height:48px;width:auto;display:none;flex-shrink:0;" />
         </div>
 
-        <!-- Desktop Nav Links -->
         <nav class="hidden md:flex items-center gap-7" id="main-nav">
           <button onclick="scrollToSec('manifesto-sec')" class="text-[10px] uppercase font-mono tracking-widest transition-colors duration-300" style="color: var(--text2)" onmouseenter="this.style.color='var(--accent2)'" onmouseleave="this.style.color='var(--text2)'" id="nav-vision">Vizyon</button>
           <button onclick="scrollToSec('expertise-sec')" class="text-[10px] uppercase font-mono tracking-widest transition-colors duration-300" style="color: var(--text2)" onmouseenter="this.style.color='var(--accent2)'" onmouseleave="this.style.color='var(--text2)'" id="nav-services">Hizmetler</button>
@@ -382,15 +357,14 @@
           <button onclick="scrollToSec('join-sec')" class="text-[10px] uppercase font-mono tracking-widest transition-colors duration-300" style="color: var(--accent2)" id="nav-join">Bize Katıl</button>
         </nav>
 
-        <!-- Mini Portal Control Options -->
         <div class="flex items-center gap-4 shrink-0">
-          <!-- Light/Dark Toggle -->
+          
           <button id="theme-btn" class="p-2 rounded-full border transition-colors duration-300 hover:opacity-80" style="border-color: var(--border); background: var(--bg2);">
-            <!-- Moon Icon (Shown when light mode) -->
+            
             <svg id="moon-icon" class="w-4 h-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent2)">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
             </svg>
-            <!-- Sun Icon (Shown when dark mode) -->
+            
             <svg id="sun-icon" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent2)">
               <circle cx="12" cy="12" r="5" />
               <line x1="12" y1="1" x2="12" y2="3" />
@@ -404,14 +378,12 @@
             </svg>
           </button>
 
-          <!-- Language Selector -->
           <button id="lang-btn" class="p-2 px-3 rounded-[2px] border text-[10px] font-mono tracking-widest transition-colors duration-300" style="border-color: var(--border); background: var(--bg2); color: var(--text);">
             EN
           </button>
 
-          <!-- Google ile Giriş -->
           <div id="google-auth-area" class="flex items-center">
-            <!-- Yapılandırılmadığında / oturum yokken gösterilen özel buton -->
+            
             <button id="google-signin-btn" class="portal-btn">
               <svg class="w-3 h-3" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/>
@@ -421,7 +393,7 @@
               </svg>
               <span id="google-signin-text">Google ile Giriş</span>
             </button>
-            <!-- Oturum açıkken gösterilen kullanıcı kartı -->
+            
             <div id="google-user-chip" class="hidden items-center gap-2 border rounded-[2px] pl-1.5 pr-3 py-1" style="border-color: var(--border); background: var(--bg2);">
               <img id="google-user-pic" src="" alt="" class="w-6 h-6 rounded-full" referrerpolicy="no-referrer" />
               <span id="google-user-name" class="text-[10px] font-mono tracking-wider" style="color: var(--text);"></span>
@@ -429,7 +401,6 @@
             </div>
           </div>
 
-          <!-- Secure Board Portal Access -->
           <button id="portal-btn" class="portal-btn hidden">
             <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
@@ -441,10 +412,8 @@
       </div>
     </header>
 
-    <!-- MAIN BODY CONTENT -->
     <main class="relative z-10 pt-28">
 
-      <!-- HERO SECTION -->
       <section class="max-w-7xl mx-auto px-6 py-20 text-center relative" id="hero">
         <span class="text-[10px] tracking-[0.2em] font-mono uppercase block mb-6 px-3 py-1 border rounded-full mx-auto w-max bg-opacity-40" style="border-color: var(--border); background: var(--bg2); color: var(--accent2)" id="hero-eyebrow">
           Corporate Trust · Digital Growth · 2026
@@ -468,7 +437,6 @@
         </div>
       </section>
 
-      <!-- MANIFESTO SECTION -->
       <section class="max-w-7xl mx-auto px-6 py-24 border-t" style="border-color: var(--border2)" id="manifesto-sec" class="section-zoom">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div class="lg:col-span-5">
@@ -494,7 +462,6 @@
         </div>
       </section>
 
-      <!-- FOR WHOM SECTION -->
       <section class="max-w-7xl mx-auto px-6 py-24 border-t" style="border-color: var(--border2)" id="for-whom-sec">
         <div class="mb-16 text-center">
           <span class="text-[10px] tracking-widest font-mono uppercase block mb-3" style="color: var(--accent2)" id="forwhom-tag">
@@ -531,7 +498,6 @@
         </div>
       </section>
 
-      <!-- EXPERTISE / EXPERT CARDS -->
       <section class="max-w-7xl mx-auto px-6 py-24 border-t" style="border-color: var(--border2)" id="expertise-sec" class="section-zoom">
         <div class="mb-16">
           <span class="text-[10px] tracking-widest font-mono uppercase block mb-3" style="color: var(--accent2)" id="exp-tag">
@@ -544,11 +510,10 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="expert-cards-container">
-          <!-- Cards will be populated dynamically to maintain language synchronism -->
+          
         </div>
       </section>
 
-      <!-- ACTIVE DISTRIBUTION NODES / ECOSYSTEM -->
       <section class="max-w-7xl mx-auto px-6 py-24 border-t" style="border-color: var(--border2)">
         <div class="mb-16">
           <span class="text-[10px] tracking-widest font-mono uppercase block mb-3" style="color: var(--accent2)" id="nodes-tag">
@@ -561,11 +526,10 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="nodes-container" style="perspective: 1200px; padding: 4px;">
-          <!-- Nodes populated dynamically by JS -->
+          
         </div>
       </section>
 
-      <!-- HIGH END CALCULATOR SECTION -->
       <section class="max-w-7xl mx-auto px-6 py-24 border-t" style="border-color: var(--border2)">
         <div class="text-center mb-16">
           <span class="text-[10px] tracking-widest font-mono uppercase block mb-3" style="color: var(--accent2)" id="calc-tag">
@@ -579,12 +543,10 @@
           </p>
         </div>
 
-        <!-- The B2B ROI Calculator Shell -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start p-8 md:p-12 rounded-[2px] border" style="border-color: var(--glass-border); background: var(--bg3); backdrop-filter: blur(16px);">
-          
-          <!-- CONTROLS -->
+
           <div class="space-y-8">
-            <!-- 1. Budget slider -->
+            
             <div>
               <div class="flex justify-between items-center mb-3">
                 <label id="lbl-calc-budget" class="text-[11px] uppercase tracking-wider font-mono" style="color: var(--text2)">
@@ -602,7 +564,6 @@
               </div>
             </div>
 
-            <!-- 2. Targeted markets count -->
             <div>
               <label id="lbl-calc-geos" class="text-[11px] uppercase tracking-wider font-mono block mb-3" style="color: var(--text2)">
                 Hedef Coğrafya / Pazar Sayısı
@@ -615,7 +576,6 @@
               </div>
             </div>
 
-            <!-- 3. Automation level -->
             <div>
               <label id="lbl-calc-level" class="text-[11px] uppercase tracking-wider font-mono block mb-3" style="color: var(--text2)">
                 Büyüme & Sosyal Medya Optimizasyonu
@@ -631,7 +591,6 @@
             </div>
           </div>
 
-          <!-- METRIC DISPLAY BOXES -->
           <div class="space-y-6 p-6 rounded-[2px] border transition-all" style="border-color: var(--glass-border); background: var(--bg2);">
             <div class="border-b pb-4" style="border-color: var(--border)">
               <span id="lbl-est-gain" class="text-[10px] tracking-wider uppercase font-mono block mb-1" style="color: var(--text2)">
@@ -659,7 +618,7 @@
                 <div class="text-3xl font-light font-display" style="color: var(--text)" id="res-score">
                   -
                 </div>
-                <!-- Visual progress bar -->
+                
                 <div class="h-1.5 flex-1 rounded-full overflow-hidden" style="background: var(--moss2);">
                   <div class="h-full rounded-full transition-all duration-500" style="background: var(--accent2);" id="res-score-bar"></div>
                 </div>
@@ -673,7 +632,6 @@
         </div>
       </section>
 
-      <!-- CONTACT SECTION -->
       <section class="max-w-7xl mx-auto px-6 py-24 border-t" style="border-color: var(--border2)" id="contact-sec" class="section-zoom">
         <div class="text-center mb-16">
           <span class="text-[10px] tracking-widest font-mono uppercase block mb-3" style="color: var(--accent2);" id="contact-tag">
@@ -687,7 +645,6 @@
           </p>
         </div>
 
-        <!-- Two-path selector -->
         <div class="max-w-xl mx-auto mb-8">
           <div class="grid grid-cols-2 gap-3">
             <button id="path-project" onclick="setPath('project')" class="py-3 text-xs font-mono uppercase tracking-widest border rounded-[2px] transition-all duration-300" style="border-color: var(--accent2); background: var(--accent2); color: var(--bg); font-weight:600;">
@@ -699,7 +656,6 @@
           </div>
         </div>
 
-        <!-- Dynamic Form -->
         <div class="max-w-xl mx-auto">
           <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
             <input type="hidden" name="access_key" value="201c704b-9aa9-45d6-a9c3-6b513e9bae18" />
@@ -714,7 +670,7 @@
               <label for="email" id="lbl-form-email" class="flbl text-[10px] uppercase tracking-[0.1em] mb-2 block" style="color: var(--text2)">E-posta Adresi</label>
               <input type="email" id="form-email" name="email" required placeholder="name@company.com" class="finput" />
             </div>
-            <!-- Project type dropdown (shown for 'project' path) -->
+            
             <div id="form-service-wrapper">
               <label for="form-service" id="lbl-form-service" class="flbl text-[10px] uppercase tracking-[0.1em] mb-2 block" style="color: var(--text2)">Hizmet Türü</label>
               <select id="form-service" name="service" class="finput" style="cursor:pointer;">
@@ -728,7 +684,7 @@
                 <option value="diger" id="svc-7">Diğer</option>
               </select>
             </div>
-            <!-- Expertise selector (shown for 'ecosystem' path) -->
+            
             <div id="form-expertise-wrapper" class="hidden">
               <label for="form-expertise" id="lbl-form-expertise" class="flbl text-[10px] uppercase tracking-[0.1em] mb-2 block" style="color: var(--text2)">Uzmanlık Alanı</label>
               <select id="form-expertise" name="expertise" class="finput" style="cursor:pointer;">
@@ -746,7 +702,7 @@
               <label for="message" id="lbl-form-message" class="flbl text-[10px] uppercase tracking-[0.1em] mb-2 block" style="color: var(--text2)">Mesajınız</label>
               <textarea id="form-message" name="message" rows="5" required placeholder="Ekosisteme nasıl katkı sağlamak istediğinizi paylaşın..." class="ftarea"></textarea>
             </div>
-            <!-- Submit Button -->
+            
             <button type="submit" class="w-full py-4 text-xs font-mono font-medium uppercase tracking-widest transition-all duration-300 rounded-[2px]" style="background: var(--accent2); color: var(--bg); font-weight: 600;" id="btn-submit-form">
               Talebi İlet
             </button>
@@ -754,7 +710,6 @@
         </div>
       </section>
 
-      <!-- JOIN US / NEWSLETTER SECTION -->
       <section class="max-w-7xl mx-auto px-6 py-24 border-t" style="border-color: var(--border2)" id="join-sec">
         <div class="max-w-2xl mx-auto text-center">
           <span class="text-[10px] tracking-widest font-mono uppercase block mb-3" style="color: var(--accent2)" id="join-tag">
@@ -786,22 +741,18 @@
 
     </main>
 
-    <!-- FOOTER -->
     <footer class="border-t py-12 px-6 mt-12 bg-black bg-opacity-60" style="border-color: var(--border2);">
       <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-6">
-        
-        <!-- Left Title -->
+
         <div class="text-[13px] tracking-[0.25em] font-display font-medium text-center md:text-left" style="color: var(--text)">
           TREERA
         </div>
-        
-        <!-- Center Copyright -->
+
         <div class="text-[10px] text-center font-light tracking-[0.05em]" style="color: var(--text2); opacity: 0.7;" id="footer-copy">
           © 2026 TREERA. TÜM HAKLARI SAKLIDIR.
           Çalışan her insan bu ekosistemi kurar — biz buna gerçekten inanıyoruz.
         </div>
 
-        <!-- Right Menu buttons -->
         <div class="flex items-center justify-center md:justify-end gap-6">
           <a href="gizlilik.html" class="text-[10px] uppercase font-light tracking-widest transition-colors duration-300 no-underline" style="color: var(--text2)" onmouseenter="this.style.color='var(--accent2)'" onmouseleave="this.style.color='var(--text2)'" id="footer-privacy">
             Aydınlatma Metni
@@ -816,7 +767,6 @@
       </div>
     </footer>
 
-    <!-- SUCCESS TOAST POPUP -->
     <div id="success-toast" class="fixed bottom-8 right-8 z-50 p-4 border rounded-[2px] transition-all duration-500 transform translate-y-12 opacity-0 flex items-center justify-between gap-4 max-w-sm hidden" style="background: var(--bg2); border-color: var(--accent2);">
       <span class="text-xs font-sans font-light tracking-wide" style="color: var(--text)" id="toast-text">
         ✓ BÜYÜME TALEBİ ALINDI. STRATEJİ MİMARLARIMIZ DEVREYE GİRİYOR.
@@ -829,7 +779,6 @@
       </button>
     </div>
 
-    <!-- COOKIE CONSENT BANNER (KVKK) -->
     <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-[60] hidden" style="background: var(--glass-bg); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-top: 1px solid var(--glass-border);">
       <div class="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row items-start md:items-center gap-4">
         <p class="text-xs leading-relaxed font-light flex-1" style="color: var(--text2)">
@@ -849,7 +798,6 @@
 
   </div>
 
-  <!-- CORE REACTIVE STATE & TRANSLATIONS ENGINE -->
   <script>
     // State values
     let currentLang = 'tr';
