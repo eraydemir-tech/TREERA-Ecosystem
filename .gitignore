@@ -1,1 +1,8 @@
 node_modules/
+
+# OS dosyaları
+.DS_Store
+**/.DS_Store
+
+# Derlenen / paketlenen çıktılar
+treera-logo-full-pack.zip

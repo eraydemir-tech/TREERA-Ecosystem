@@ -4,6 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Treera — The Impact Ecosystem</title>
+  <meta name="description" content="Treera; sermaye, tasarım ve yazılımı tek çatı altında yöneten sistematik bir etki platformudur. AI entegre web siteleri, mobil uygulamalar ve SaaS ürünleri.">
+  <meta name="author" content="Treera">
+  <link rel="canonical" href="https://treera.co/">
+
+  <!-- Open Graph / sosyal paylaşım -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Treera">
+  <meta property="og:title" content="Treera — The Impact Ecosystem">
+  <meta property="og:description" content="Sermaye, tasarım ve yazılımı tek çatı altında yöneten sistematik bir etki platformu.">
+  <meta property="og:url" content="https://treera.co/">
+  <meta property="og:image" content="https://treera.co/treera-logo-full/05-social-1080/treera-05-social-1080-dark.svg">
+  <meta property="og:locale" content="tr_TR">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Treera — The Impact Ecosystem">
+  <meta name="twitter:description" content="Sermaye, tasarım ve yazılımı tek çatı altında yöneten sistematik bir etki platformu.">
+  <meta name="twitter:image" content="https://treera.co/treera-logo-full/05-social-1080/treera-05-social-1080-dark.svg">
+
   <link rel="icon" type="image/svg+xml" href="treera-logo-full/04-favicon/treera-04-favicon-dark.svg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -662,6 +681,8 @@
             <input type="hidden" name="subject" value="Treera — Yeni Başvuru" />
             <input type="hidden" name="from_name" value="Treera Website" />
             <input type="hidden" id="form-path" name="path" value="ecosystem" />
+            <!-- Honeypot: botlar doldurur, gerçek kullanıcılar göremez -->
+            <input type="text" id="form-botcheck" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none" />
             <div>
               <label for="identity" id="lbl-form-name" class="flbl text-[10px] uppercase tracking-[0.1em] mb-2 block" style="color: var(--text2)">İsim / Kurum</label>
               <input type="text" id="form-name" name="name" required placeholder="Adınız veya kurumunuz" class="finput" />
@@ -723,6 +744,8 @@
           </p>
 
           <form id="newsletter-form" class="max-w-md mx-auto space-y-4">
+            <!-- Honeypot: botlar doldurur, gerçek kullanıcılar göremez -->
+            <input type="text" id="newsletter-botcheck" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none" />
             <div class="flex flex-col sm:flex-row gap-3">
               <input type="email" id="newsletter-email" name="email" required placeholder="name@company.com" class="finput flex-1" />
               <button type="submit" class="px-8 py-3.5 text-xs font-mono uppercase tracking-widest rounded-[2px] transition-all duration-300 shrink-0" style="background: var(--accent2); color: var(--bg); font-weight: 600;" id="btn-newsletter">
@@ -1263,6 +1286,9 @@
     // İletişim formu — gerçek gönderim
     document.getElementById('contact-form').addEventListener('submit', async (e) => {
       e.preventDefault();
+      // Honeypot doluysa sessizce çık (bot olası) — başarı taklidi yap
+      const hp = document.getElementById('form-botcheck');
+      if (hp && hp.value) { return; }
       const pack = translations[currentLang];
       const btn = document.getElementById('btn-submit-form');
       const original = btn.innerText;
@@ -1297,6 +1323,9 @@
     if (newsletterForm) {
       newsletterForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        // Honeypot doluysa sessizce çık (bot olası)
+        const hp = document.getElementById('newsletter-botcheck');
+        if (hp && hp.value) { return; }
         const pack = translations[currentLang];
         const btn = document.getElementById('btn-newsletter');
         const original = btn.innerText;
@@ -1340,15 +1369,14 @@
     // Populate Expertise Cells Responsive
     function populateExpertise() {
       const container = document.getElementById('expert-cards-container');
-      container.innerHTML = '';
-      
-      expertiseData.forEach((card, idx) => {
+
+      container.innerHTML = expertiseData.map((card, idx) => {
         const title = currentLang === 'tr' ? card.titleTr : card.titleEn;
         const desc = currentLang === 'tr' ? card.descTr : card.descEn;
-        
+
         const items = currentLang === 'tr' ? card.itemsTr : card.itemsEn;
         const itemsHtml = items ? `<ul class="mt-4 space-y-1.5">${items.map(i => `<li class="flex items-start gap-2 text-[11px] font-light" style="color:var(--text2)"><span style="color:var(--accent2);margin-top:2px">—</span>${i}</li>`).join('')}</ul>` : '';
-        container.innerHTML += `
+        return `
           <div class="expert-card" style="opacity:0;transform:translateY(35px) scale(0.96);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1) ${0.1 + idx*0.18}s,transform 0.9s cubic-bezier(0.16,1,0.3,1) ${0.1 + idx*0.18}s">
             <span class="font-mono text-[9px] tracking-widest block mb-4" style="color: var(--accent2)">${card.num}</span>
             <h3 class="font-display text-2.5xl font-light mt-4 mb-3" style="color: var(--text)">${title}</h3>
@@ -1356,19 +1384,18 @@
             ${itemsHtml}
           </div>
         `;
-      });
+      }).join('');
     }
 
     // Populate Dynamic Nodes
     function populateNodes() {
       const container = document.getElementById('nodes-container');
-      container.innerHTML = '';
 
-      nodesData.forEach(node => {
+      container.innerHTML = nodesData.map(node => {
         const focus = currentLang === 'tr' ? node.focusTr : node.focusEn;
         const scope = currentLang === 'tr' ? node.scopeTr : node.scopeEn;
-        
-        container.innerHTML += `
+
+        return `
           <div class="matrix-node flex flex-col justify-between min-h-[220px]">
             <div>
               <div class="flex justify-between items-center mb-4">
@@ -1383,7 +1410,7 @@
             </div>
           </div>
         `;
-      });
+      }).join('');
     }
 
     // Synchronize UI elements & strings reactive loop
@@ -1656,6 +1683,10 @@
     // "Authorized JavaScript origins" listesine ekle ve aşağıya yapıştır.
     const GOOGLE_CLIENT_ID = ''; // örn: '1234567890-abc.apps.googleusercontent.com'
 
+    // GÜVENLİK: Aşağıdaki çözümleme yalnızca kullanıcı adı/avatarı GÖSTERMEK
+    // içindir. İmzayı doğrulamaz; bu yüzden ASLA yetkilendirme (erişim kararı)
+    // için kullanılmamalıdır. Korumalı bir kaynak gerekiyorsa token bir
+    // sunucuda doğrulanmalıdır.
     function decodeJwtPayload(token) {
       const base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
       return JSON.parse(decodeURIComponent(atob(base64).split('').map(
